@@ -2,8 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.serenitybdd.starter</groupId>
-    <artifactId>serenity-rest-starter</artifactId>
+
+    <groupId>net.serenitybdd.api.starter</groupId>
+    <artifactId>serenity-rest-api.starter</artifactId>
+
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -35,30 +37,35 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-junit</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-rest-assured</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-screenplay</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-screenplay-rest</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-cucumber6</artifactId>
@@ -113,9 +120,17 @@
             <version>2.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.arakelian</groupId>
+            <artifactId>faker</artifactId>
+            <version>3.9.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -124,6 +139,7 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
+
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M5</version>
@@ -176,6 +192,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 

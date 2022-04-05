@@ -1,6 +1,5 @@
-package starter.postcodes;
+package api.service.postcodes;
 
-import io.restassured.RestAssured;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 

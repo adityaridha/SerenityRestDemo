@@ -1,4 +1,4 @@
-package starter.postcodes;
+package api.service.postcodes;
 
 public class LocationResponse {
     public static final String COUNTRY = "'country'";
