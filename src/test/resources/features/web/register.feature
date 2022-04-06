@@ -1,4 +1,4 @@
-@register @staging @ALT-123
+@web @register @staging @ALT-123
 Feature: Register
 
   @positive
@@ -9,7 +9,7 @@ Feature: Register
     When user click register button
     Then user should be redirected to homepage
 
-  @negatif
+  @negatif @exclude @expired
   Scenario: Failed Register
     And user input email data
     And user input password data

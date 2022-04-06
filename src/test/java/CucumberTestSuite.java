@@ -6,7 +6,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty"},
         features = "src/test/resources/features",
-        glue = {"api.stepdef"},
-        tags = "@reqres"
+        tags = "@adit"
 )
 public class CucumberTestSuite {}

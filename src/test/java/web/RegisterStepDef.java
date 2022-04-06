@@ -1,10 +1,16 @@
-package api.stepdef;
+package web;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class RegisterStepsDefinitions {
+public class RegisterStepDef {
+    @Given("user is on registration page")
+    public void userIsOnRegistrationPage() {
+        System.out.println("User berada di halaman register");
+    }
+
     @And("user input email data")
     public void userInputEmailData() {
         System.out.println("input email");
