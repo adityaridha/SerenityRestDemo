@@ -8,7 +8,9 @@ public class Reqresin {
     private static final String REQRESIN_BASEURL = "https://reqres.in";
 
     public void getListUser() {
-        SerenityRest.get(REQRESIN_BASEURL + "/api/users?page=2");
+        SerenityRest.given()
+                .queryParam("page", "1")
+                .get(REQRESIN_BASEURL + "/api/users");
     }
 
     public void postLogin() {
@@ -27,8 +29,9 @@ public class Reqresin {
 
     public void putUpdate() {
         JSONObject bodyJson = new JSONObject();
-        bodyJson.put("email", "eve.holt@reqres.in");
-        bodyJson.put("password", "cityslicka");
+
+        bodyJson.put("name", "morpheus");
+        bodyJson.put("job", "zion");
 
         SerenityRest.given()
                 .header("Content-type", "application/json")

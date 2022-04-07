@@ -132,7 +132,18 @@
             <version>20180813</version>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+
+
     </dependencies>
+
 
     <build>
         <plugins>
