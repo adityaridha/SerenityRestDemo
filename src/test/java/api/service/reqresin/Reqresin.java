@@ -1,11 +1,26 @@
 package api.service.reqresin;
 
+import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
 import org.json.JSONObject;
 
+
+import java.io.File;
+
 public class Reqresin {
 
+    public Response response;
+
     private static final String REQRESIN_BASEURL = "https://reqres.in";
+
+    private String composeBodyJson() {
+        JSONObject bodyJson = new JSONObject();
+
+        bodyJson.put("email", "eve.holt@reqres.in");
+        bodyJson.put("password", "cityslicka");
+
+        return bodyJson.toString();
+    }
 
     public void getListUser() {
         SerenityRest.given()
@@ -14,17 +29,26 @@ public class Reqresin {
     }
 
     public void postLogin() {
+        SerenityRest.given()
+                .header("Content-type", "application/json")
+                .body(composeBodyJson())
+                .post(REQRESIN_BASEURL + "/api/login");
+    }
 
-        JSONObject bodyJson = new JSONObject();
-
-        bodyJson.put("email", "eve.holt@reqres.in");
-        bodyJson.put("password", "cityslicka");
+    public void postLoginWithParam(String jsonPath) {
+        File bodyJson = new File(String.format("src/test/resources/payload/%s", jsonPath));
 
         SerenityRest.given()
                 .header("Content-type", "application/json")
-                .body(bodyJson.toString())
+                .body(bodyJson)
                 .post(REQRESIN_BASEURL + "/api/login");
+    }
 
+    public void postRegister() {
+        SerenityRest.given()
+                .header("Content-type", "application/json")
+                .body(composeBodyJson())
+                .post(REQRESIN_BASEURL + "/api/register");
     }
 
     public void putUpdate() {

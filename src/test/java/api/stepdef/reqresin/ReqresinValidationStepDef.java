@@ -26,6 +26,8 @@ public class ReqresinValidationStepDef {
 
     @Then("^response structure should match json schema \"([^\"]*)\"$")
     public void validateJsonSchema(String schema) {
+
+
         String path = String.format("schema/%s", schema);
         restAssuredThat(response -> response.assertThat().body(matchesJsonSchemaInClasspath(path)));
     }
