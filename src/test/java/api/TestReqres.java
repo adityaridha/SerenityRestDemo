@@ -2,7 +2,9 @@ package api;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.assertj.core.api.Assert;
 import org.json.JSONObject;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -11,19 +13,9 @@ public class TestReqres {
 
     @Test
     public void test_get_list_users() {
-        System.out.println("Execute test satu");
         Response response = RestAssured.get("https://reqres.in/api/users?page=2");
-
-        response.body().prettyPrint();
-
-        int statusCode = response.statusCode();
-        int dataPerPage = response.body().jsonPath().get("per_page");
-
-        assert statusCode == 200;
-        assert dataPerPage == 6;
-
-        System.out.println(statusCode);
-        System.out.println(response.body().jsonPath().get("data[0].id").toString());
+        assert response.statusCode() == 200;
+        assert (Integer) response.body().jsonPath().get("per_page") == 6;
     }
 
     @Test
