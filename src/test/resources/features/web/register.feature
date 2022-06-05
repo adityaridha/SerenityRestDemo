@@ -9,7 +9,7 @@ Feature: Register
     When user click register button
     Then user should be redirected to homepage
 
-  @negatif @exclude @expired @web-2
+  @negative @exclude @expired @web-2
   Scenario: Failed Register
     And user input email data
     And user input password data
