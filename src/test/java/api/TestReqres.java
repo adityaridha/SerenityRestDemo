@@ -1,6 +1,7 @@
 package api;
 
 import io.restassured.RestAssured;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assert;
 import org.json.JSONObject;
@@ -16,6 +17,7 @@ public class TestReqres {
         Response response = RestAssured.get("https://reqres.in/api/users?page=2");
         assert response.statusCode() == 200;
         assert (Integer) response.body().jsonPath().get("per_page") == 6;
+        response.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/users.json"));
     }
 
     @Test
@@ -26,7 +28,6 @@ public class TestReqres {
 
         Response response = RestAssured.given().headers("Content-type", "application/json").
                 body(body.toString()).post("https://reqres.in/api/register");
-
         response.body().prettyPrint();
     }
 
@@ -35,7 +36,7 @@ public class TestReqres {
         RestAssured.get("https://reqres.in/api/users/2")
                 .then()
                 .statusCode(200)
-                .body("data.id", equalTo(2));
+                .body("data.id", equalTo(2))
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/single-user.json"));
     }
-
 }
