@@ -12,7 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class ReqresTest {
 
-    Reqres reqres =  new Reqres();
+    Reqres reqres = new Reqres();
 
     @BeforeAll
     public static void setup() {
@@ -22,9 +22,6 @@ public class ReqresTest {
     @Test
     public void test_get_list_users() {
         Response response = RestAssured.get("/users?page=2");
-        assert response.statusCode() == 200;
-        assert (Integer) response.body().jsonPath().get("per_page") == 6;
-        System.out.println(response.getTime());
         response.then().assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schema/users.json"));
     }
 
@@ -52,13 +49,12 @@ public class ReqresTest {
     @Test
     public void test_get_delayed_response() {
         Response response = reqres.getDelayedResponse();
-        response.prettyPrint();
     }
 
     @Test
     public void test_get_single_resource() {
         // 1. Request API
-        Response response = RestAssured.get("https://reqres.in/api/unknown/2");
+        Response response = RestAssured.get("/unknown/2");
 
         // 2. Validasi API
         System.out.println(response.body().asPrettyString());
@@ -74,7 +70,7 @@ public class ReqresTest {
 
     @Test
     public void test_get_single_resource_2() {
-        RestAssured.get("https://reqres.in/api/unknown/2").then().statusCode(200);
+        RestAssured.get("/unknown/2").then().statusCode(200);
     }
 
     @Test
@@ -86,7 +82,7 @@ public class ReqresTest {
 
         Response response = RestAssured.given()
                 .body(bodyData.toString())
-                .post("https://reqres.in/api/users");
+                .post("/users");
 
         Assertions.assertEquals(response.statusCode(), 201);
     }
