@@ -20,7 +20,7 @@ public class ReqresinStepDef {
         reqresin.postLogin();
     }
 
-    @And("user send GET Users request to reqresin")
+    @And("user send GET List Users request to reqresin")
     public void getUsers() {
         reqresin.getListUser();
     }

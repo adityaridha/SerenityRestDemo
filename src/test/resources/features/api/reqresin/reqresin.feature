@@ -3,8 +3,9 @@ Feature: Reqresin
 
   @get-user
   Scenario: Success GET users
-    When user send GET Users request to reqresin
+    When user send GET List Users request to reqresin
     Then response status code should be 200
+    And response path "page" should contain Int value 1
     And response structure should match json schema "users.json"
 
   @post-login @positif

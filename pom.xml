@@ -60,6 +60,7 @@
             <artifactId>json-path</artifactId>
             <version>4.3.3</version>
         </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
@@ -105,6 +106,7 @@
                 </configuration>
             </plugin>
 
+
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M5</version>
@@ -125,6 +127,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -134,6 +137,8 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <!---For generating Serenity Report, Ref: https://github.com/serenity-bdd/serenity-cucumber-starter-->
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
